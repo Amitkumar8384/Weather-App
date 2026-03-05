@@ -1,0 +1,477 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holi Wish</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:black;
+overflow:hidden;
+color:white;
+}
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+background: radial-gradient(circle,#ff00cc,#3333ff,#00ffcc);
+animation:move 6s infinite alternate;
+z-index:-1;
+}
+
+@keyframes move{
+0%{filter:hue-rotate(0deg);}
+100%{filter:hue-rotate(360deg);}
+}
+
+.container{
+text-align:center;
+}
+
+h1{
+font-size:45px;
+font-weight:900;
+text-shadow:0 0 20px #fff;
+}
+
+input{
+padding:12px 20px;
+border:none;
+border-radius:30px;
+margin-top:20px;
+outline:none;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+margin-top:15px;
+cursor:pointer;
+font-weight:bold;
+}
+
+#wish{
+margin-top:25px;
+font-size:35px;
+animation:pop 1s ease forwards;
+}
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+
+.share{
+margin-top:20px;
+display:none;
+}
+canvas{
+position:absolute;
+top:0;
+left:0;
+pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<canvas id="confetti"></canvas>
+
+<div class="container">
+<h1>🌈 Create Your Holi Wish 🎉</h1>
+<input type="text" id="name" placeholder="Enter your name">
+<br>
+<button onclick="celebrate()">Celebrate</button>
+<div id="wish"></div>
+<button class="share" id="shareBtn" onclick="copyLink()">Copy & Share Link 🔥</button>
+</div>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<script>
+
+// Auto wish from URL
+const urlParams = new URLSearchParams(window.location.search);
+const urlName = urlParams.get('name');
+if(urlName){
+document.getElementById("wish").innerHTML = "🎉 Happy Holi " + urlName + " 🎨";
+startConfetti();
+}
+
+function celebrate(){
+let name=document.getElementById("name").value;
+if(name===""){
+alert("Enter name first");
+return;
+}
+
+document.getElementById("wish").innerHTML =
+"🎉 Happy Holi " + name + " 🎨";
+
+document.getElementById("shareBtn").style.display="inline-block";
+
+document.getElementById("music").play();
+
+startConfetti();
+}
+
+// Share link
+function copyLink(){
+let name=document.getElementById("name").value;
+let link=window.location.origin + "?name=" + name;
+navigator.clipboard.writeText(link);
+alert("Link copied! Share on Instagram 🔥");
+}
+
+// Confetti
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let pieces=[];
+
+function startConfetti(){
+for(let i=0;i<120;i++){
+pieces.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*6+4,
+color:`hsl(${Math.random()*360},100%,50%)`
+});
+}
+draw();
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+pieces.forEach(p=>{
+ctx.beginPath();
+ctx.fillStyle=p.color;
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=3;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(draw);
+}
+</script>
+
+</body>
+</html>-->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Holi Wish Generator</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+overflow:hidden;
+
+background:linear-gradient(-45deg,#ff00cc,#3333ff,#00ffcc,#ff9900);
+background-size:400% 400%;
+animation:gradient 10s ease infinite;
+
+}
+
+@keyframes gradient{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+canvas{
+
+position:absolute;
+top:0;
+left:0;
+
+}
+
+.container{
+
+text-align:center;
+z-index:2;
+
+}
+
+.logo{
+
+font-size:40px;
+font-weight:900;
+text-shadow:0 0 20px white;
+
+}
+
+input{
+
+padding:12px 20px;
+border:none;
+border-radius:30px;
+margin-top:20px;
+
+}
+
+button{
+
+padding:12px 25px;
+border:none;
+border-radius:30px;
+margin-top:10px;
+cursor:pointer;
+font-weight:bold;
+display:flex;
+align-items:center;
+gap:8px;
+justify-content:center;
+margin-left:auto;
+margin-right:auto;
+
+}
+
+.whatsapp{
+
+background:#25D366;
+color:white;
+
+}
+
+#wish{
+
+font-size:35px;
+margin-top:25px;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container" id="capture">
+
+<h1 class="logo">
+<i class="fa-solid fa-palette"></i> Holi Wish Generator
+</h1>
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<br>
+
+<button onclick="celebrate()">
+<i class="fa-solid fa-wand-magic-sparkles"></i> Generate Wish
+</button>
+
+<button onclick="downloadWish()">
+<i class="fa-solid fa-file-arrow-down"></i> Download Image
+</button>
+
+<button class="whatsapp" onclick="shareWhatsapp()">
+<i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+</button>
+
+<div id="wish"></div>
+
+</div>
+
+<script>
+
+const canvas=document.getElementById("canvas")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
+class Particle{
+
+constructor(x,y){
+
+this.x=x
+this.y=y
+this.size=Math.random()*8+2
+
+this.speedX=Math.random()*6-3
+this.speedY=Math.random()*6-3
+
+this.color=`hsl(${Math.random()*360},100%,50%)`
+
+}
+
+update(){
+
+this.x+=this.speedX
+this.y+=this.speedY
+this.size*=0.96
+
+}
+
+draw(){
+
+ctx.fillStyle=this.color
+ctx.beginPath()
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2)
+ctx.fill()
+
+}
+
+}
+
+function explode(x,y){
+
+for(let i=0;i<200;i++){
+
+particles.push(new Particle(x,y))
+
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach((p,i)=>{
+
+p.update()
+p.draw()
+
+if(p.size<0.5){
+
+particles.splice(i,1)
+
+}
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+document.addEventListener("mousemove",(e)=>{
+
+for(let i=0;i<2;i++){
+
+particles.push(new Particle(e.clientX,e.clientY))
+
+}
+
+})
+
+function celebrate(){
+
+let name=document.getElementById("name").value
+
+if(name===""){
+
+alert("Enter your name")
+return
+
+}
+
+document.getElementById("wish").innerHTML=
+"🎉 Happy Holi "+name+" 🎨"
+
+explode(canvas.width/2,canvas.height/2)
+
+}
+
+function downloadWish(){
+
+html2canvas(document.getElementById("capture")).then(canvas=>{
+
+let a=document.createElement("a")
+
+a.download="holi-wish.png"
+
+a.href=canvas.toDataURL()
+
+a.click()
+
+})
+
+}
+
+function shareWhatsapp(){
+
+let name=document.getElementById("name").value
+
+let link=window.location.origin+"?name="+name
+
+window.open(
+"https://wa.me/?text=Get your Holi wish 🎨 "+link
+)
+
+}
+
+const params=new URLSearchParams(window.location.search)
+const urlName=params.get("name")
+
+if(urlName){
+
+document.getElementById("wish").innerHTML=
+"🎉 Happy Holi "+urlName+" 🎨"
+
+explode(canvas.width/2,canvas.height/2)
+
+}
+
+</script>
+
+</body>
+</html>     
